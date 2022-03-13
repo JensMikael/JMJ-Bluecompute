@@ -1,10 +1,10 @@
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: bluecompute-cluster-role
   labels:
     app: bluecompute
-rules: 
+rules:
 - apiGroups:
   - extensions
   resources:
@@ -14,7 +14,7 @@ rules:
   verbs:
   - use
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: bluecompute-cluster-role-binding
@@ -30,7 +30,7 @@ roleRef:
   kind: ClusterRole
   name: bluecompute-cluster-role
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: PodSecurityPolicy
 metadata:
   name: bluecompute-pod-security-policy
