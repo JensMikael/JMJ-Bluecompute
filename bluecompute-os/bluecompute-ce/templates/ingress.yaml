@@ -1,0 +1,60 @@
+---
+# Source: bluecompute-ce/templates/ingress.yaml
+# apiVersion: apps/v1
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bluecompute-bluecompute-ce
+  labels:
+    app: bluecompute
+    heritage: "Helm"
+    release: "bluecompute"
+    chart: bluecompute-ce-0.0.9
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: web
+            port:
+              number: 80
+        pathType: ImplementationSpecific
+  - http:
+      paths:
+      - path: /oauth
+        backend:
+          service:
+            name: auth
+            port:
+              number: 8083
+        pathType: ImplementationSpecific
+      - path: /micro/items
+        backend:
+          service:
+            name: catalog
+            port:
+              number: 8081
+        pathType: ImplementationSpecific
+      - path: /micro/customer
+        backend:
+          service:
+            name: customer
+            port:
+              number: 8082
+        pathType: ImplementationSpecific
+      - path: /micro/inventory
+        backend:
+          service:
+            name: inventory
+            port:
+              number: 8080
+        pathType: ImplementationSpecific
+      - path: /micro/orders
+        backend:
+          service:
+            name: orders
+            port:
+              number: 8084
+        pathType: ImplementationSpecific

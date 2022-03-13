@@ -1,0 +1,62 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "bluecompute.fullname" . }}
+{{- if .Values.ingress.annotations }}
+  annotations:
+{{ toYaml .Values.ingress.annotations | indent 4 }}
+{{- end }}
+  labels:
+    {{- include "bluecompute.labels" . | indent 4 }}
+spec:
+{{- if .Values.ingress.enableTLS }}
+  tls:
+{{ toYaml .Values.ingress.TLS | indent 2 }}
+{{- end }}
+  rules:
+  - http:
+      paths:
+      - path: {{ .Values.web.ingress.path }}
+        backend:
+          serviceName: {{ .Values.web.fullnameOverride }}
+          servicePort: {{ .Values.web.service.externalPort }}
+  {{- if and .Values.web.enabled .Values.ingress.hostnames.app }}
+    host: {{ .Values.ingress.hostnames.app }}
+  {{- end }}
+  - http:
+      paths:
+      {{- if .Values.auth.enabled }}
+      - path: {{ .Values.auth.ingress.path }}
+        backend:
+          serviceName: {{ .Values.auth.fullnameOverride }}
+          servicePort: {{ .Values.auth.service.externalPort }}
+      {{- end }}
+      {{- if .Values.catalog.enabled }}
+      - path: {{ .Values.catalog.ingress.path }}
+        backend:
+          serviceName: {{ .Values.catalog.fullnameOverride }}
+          servicePort: {{ .Values.catalog.service.externalPort }}
+      {{- end }}
+      {{- if .Values.customer.enabled }}
+      - path: {{ .Values.customer.ingress.path }}
+        backend:
+          serviceName: {{ .Values.customer.fullnameOverride }}
+          servicePort: {{ .Values.customer.service.externalPort }}
+      {{- end }}
+      {{- if .Values.inventory.enabled }}
+      - path: {{ .Values.inventory.ingress.path }}
+        backend:
+          serviceName: {{ .Values.inventory.fullnameOverride }}
+          servicePort: {{ .Values.inventory.service.externalPort }}
+      {{- end }}
+      {{- if .Values.orders.enabled }}
+      - path: {{ .Values.orders.ingress.path }}
+        backend:
+          serviceName: {{ .Values.orders.fullnameOverride }}
+          servicePort: {{ .Values.orders.service.externalPort }}
+      {{- end }}
+  {{- if .Values.ingress.hostnames.api }}
+    host: {{ .Values.ingress.hostnames.api }}
+  {{- end }}
+{{- end }}
