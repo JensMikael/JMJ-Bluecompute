@@ -1,6 +1,5 @@
 ---
 # Source: bluecompute-ce/templates/ingress.yaml
-# apiVersion: apps/v1
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -9,7 +8,7 @@ metadata:
     app: bluecompute
     heritage: "Helm"
     release: "bluecompute"
-    chart: bluecompute-ce-0.0.9
+    chart: bluecompute-ce-0.0.10
 spec:
   rules:
   - http:
