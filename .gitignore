@@ -47,3 +47,9 @@ bluecompute-ce/requirements.lock
 
 # Ignore bluecompute-os folder
 # bluecompute-os
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
