@@ -64,7 +64,7 @@ helm template docs/charts/bluecompute-ce/bluecompute-ce-0.0.10.tgz --namespace b
 - Moved them into my own repository available at :
 Special clone option is
 ```bash
-git clone -b spring --single-branch https://github.com/JensMikael/JMJ-os-bluecompute
+git clone https://github.com/JensMikael/JMJ-Bluecompute
 ```
 There is some modification required because of update to kubectl. Details are int he depricated list for kubernetes
 https://kubernetes.io/docs/reference/using-api/deprecation-guide/
