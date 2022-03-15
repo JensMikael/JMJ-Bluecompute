@@ -18,14 +18,14 @@ spec:
       labels:
         app: inventory-mysql
     spec:
-      initContainers:
-      - name: "remove-lost-found"
-        image: "busybox:latest"
-        imagePullPolicy: "IfNotPresent"
-        command:  ["rm", "-fr", "/var/lib/mysql/lost+found"]
-        volumeMounts:
-        - name: data
-          mountPath: /var/lib/mysql
+#      initContainers:
+#      - name: "remove-lost-found"
+#        image: "busybox:latest"
+#        imagePullPolicy: "IfNotPresent"
+#        command:  ["rm", "-fr", "/var/lib/mysql/lost+found"]
+#        volumeMounts:
+#        - name: data
+#          mountPath: /var/lib/mysql
       # - name: do-something
       #   image: busybox
       #   command: ['do', 'something']
