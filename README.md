@@ -106,22 +106,23 @@ This is needed for the following files as listed:
 - bluecompute-os/bluecompute-ce/charts/web/templates/deployment.yaml
 
 3. extensions/v1beta1 to networking.k8s.io/v1 in file:
-bluecompute-os/bluecompute-ce/templates/ingress.yaml
+ - bluecompute-os/bluecompute-ce/templates/ingress.yaml
 
-This also inply the need to adopt the new syntax for
-- spec.rules[0].http.paths[0].pathType  . I have selected ImplementationSpecific
++ This also inply the need to adopt the new syntax for
+- spec.rules[0].http.paths[0].pathType
++  I have selected ImplementationSpecific
 
-Need to adopt new syntax for serviceName & servicePort
++ Need to adopt new syntax for serviceName & servicePort
 - spec.rules[0].http.paths[0].backend.service.name
 - spec.rules[0].http.paths[0].backend.service.port.number
 
-4.  Update the Elastic search to try and remove root previligies
+4.  Update the Elastic search to try and remove root previligies:
 https://www.ibm.com/cloud/blog/deploying-helm-charts-on-openshift
 
-In bluecompute-os/bluecompute-ce/charts/elasticsearch/templates edit the files:
-client-deplpoyment.yaml: Delete 39-49
-data-statefulset.yaml: Delete  41-75
-master-statefulset.yaml: Delete  41 -76
++ In bluecompute-os/bluecompute-ce/charts/elasticsearch/templates edit the files:
+- client-deplpoyment.yaml: Delete 39-49
+- data-statefulset.yaml: Delete  41-75
+- master-statefulset.yaml: Delete  41 -76
 
 
 ## Application Overview
