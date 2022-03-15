@@ -7,5 +7,5 @@ metadata:
 data:
   run.sh: |-
     @test "Testing MariaDB is accessible" {
-      mysql -h bluecompute-orders-mariadb -uroot -p$MARIADB_ROOT_PASSWORD -e 'show databases;'
+      mysql -h bluecompute-orders-mariadb -uroot -pYWRtaW4xMjM= -e 'show databases;'
     }

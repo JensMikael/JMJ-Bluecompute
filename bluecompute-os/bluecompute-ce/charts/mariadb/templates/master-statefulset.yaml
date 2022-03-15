@@ -13,9 +13,9 @@ metadata:
 spec:
   selector:
     matchLabels:
+      app: orders-mariadb
       release: "bluecompute"
       component: "master"
-      app: orders-mariadb
   serviceName: "bluecompute-mariadb"
   replicas: 1
   updateStrategy:
